@@ -12,10 +12,12 @@ router.get('/tasks', todoController.getTasks);
 // POST /todo/task
 router.post('/task', todoController.createTask);
 
-// router.get('/task/:taskId', isAuth, todoController.getPost);
+// router.get('/task/:taskId', isAuth, todoController.getTask);
 
-// router.put('/post/:postId', isAuth, todoController.updatePost);
+// PUT /todo/task/:taskId
+router.put('/task/:taskId', todoController.updateTask);
 
-// router.delete('/task/:taskId', isAuth, todoController.deletePost);
+// DELETE /todo/task/:taskId
+router.delete('/task/:taskId', todoController.deleteTask);
 
 module.exports = router;
