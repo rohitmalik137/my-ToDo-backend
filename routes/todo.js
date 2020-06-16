@@ -14,8 +14,11 @@ router.post('/task', todoController.createTask);
 
 // router.get('/task/:taskId', isAuth, todoController.getTask);
 
-// PUT /todo/task/:taskId
-router.put('/task/:taskId', todoController.updateTask);
+// PUT /todo/task-important/:taskId
+router.put('/task-important/:taskId', todoController.updateImportantTask);
+
+// PUT /todo/task-complete/:taskId
+router.put('/task-complete/:taskId', todoController.updateCompleteTask);
 
 // DELETE /todo/task/:taskId
 router.delete('/task/:taskId', todoController.deleteTask);

@@ -42,7 +42,37 @@ exports.createTask = (req, res, next) => {
     });
 };
 
-exports.updateTask = (req, res, next) => {
+exports.updateCompleteTask = (req, res, next) => {
+  const taskId = req.params.taskId;
+  // const errors = validationResult(req);
+  // if (!errors.isEmpty()) {
+  //   const error = new Error('Validation failed, entered data is incorrect.');
+  //   error.statusCode = 422;
+  //   throw error;
+  // }
+  const completed = req.body.completed;
+  Todo.findById(taskId)
+    .then(task => {
+      if (!task) {
+        const error = new Error('Could not find task.');
+        error.statusCode = 404;
+        throw error;
+      }
+      task.completed = completed
+      return task.save();
+    })
+    .then(result => {
+      res.status(200).json({ message: 'Task updated!', task: result });
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.updateImportantTask = (req, res, next) => {
   const taskId = req.params.taskId;
   // const errors = validationResult(req);
   // if (!errors.isEmpty()) {
