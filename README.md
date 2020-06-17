@@ -1,4 +1,3 @@
-#WIP
 # my-ToDo-backend
 
 REST APIs to perform CRUD operations on a React Js ToDo application.
